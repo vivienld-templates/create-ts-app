@@ -1,3 +1,3 @@
-# Template generator
+# Create Typescript App
 
-Utility to generate nodeJS project templates
+CLI to generate ready to dev Typescript Apps
