@@ -20,9 +20,10 @@
     "jest-test-gen": "^1.4.3",
     "mkdirp": "^3.0.0",
     "npm-registry-fetch": "^14.0.3",
+    "pino": "^8.11.0",
+    "pino-pretty": "^10.0.0",
     "ts-jest": "^29.1.0",
     "typedoc": "^0.24.1",
-    "pino": "^8.11.0",
     "typescript": "^5.0.4"
   }
 }
