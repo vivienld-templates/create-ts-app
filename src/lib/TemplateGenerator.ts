@@ -1,5 +1,6 @@
 import { mkdirp } from "mkdirp";
 import * as path from "path";
+import * as fs from "fs";
 
 /**
  * Class to create a template directory.
@@ -13,12 +14,15 @@ class TemplateGenerator {
     private _srcDir: string;
     /** The test directory path. */
     private _testDir: string;
+    /** The assets directory path. */
+    private _assetsDir: string;
 
     constructor(name: string) {
         this.name = name;
         this.rootDir = path.join(this.name);
         this.srcDir = path.join(this.name, "src");
         this.testDir = path.join(this.name, "test");
+        this.assetsDir = path.join("assets");
     }
 
     /**
@@ -43,13 +47,57 @@ class TemplateGenerator {
     };
 
     /**
+     * Copies the `.gitignore` file in the project's root directory
+     */
+    copyGitIgnoreFile = (): void => {
+        console;
+        this.copyAsset(".gitignore", this.rootDir);
+    };
+
+    /**
+     * Copies the `jest.config.js` file in the project's root directory
+     */
+    copyJestConfigFile = (): void => {
+        console;
+        this.copyAsset("jest.config.js", this.rootDir);
+    };
+
+    /**
+     * Copies the `tsconfig.json` file in the project's root directory
+     */
+    copyTsConfigFile = (): void => {
+        console;
+        this.copyAsset("tsconfig.json", this.rootDir);
+    };
+
+    /**
      * Recursively generates the directories.
-     * @param path The directories path
+     * @param path The directories path.
      */
     private generateDir(path: string): void {
         console.log(`Generating ${path} dir(s)`);
         mkdirp.sync(path);
+        console.log("ok");
     }
+
+    /**
+     * Copies an asset into the given destination.
+     * @param fileName The asset file name.
+     * @param destination The copy destination.
+     */
+    private copyAsset = (fileName: string, destination: string): void => {
+        console.log(
+            `Copying ${path.join(
+                this.assetsDir,
+                fileName
+            )} file to ${destination}`
+        );
+        fs.copyFileSync(
+            path.join(this.assetsDir, fileName),
+            path.join(destination, fileName)
+        );
+        console.log("ok");
+    };
 
     /** Getters setters **/
 
@@ -79,6 +127,13 @@ class TemplateGenerator {
     }
     public set testDir(value: string) {
         this._testDir = value;
+    }
+
+    public get assetsDir(): string {
+        return this._assetsDir;
+    }
+    public set assetsDir(value: string) {
+        this._assetsDir = value;
     }
 }
 
