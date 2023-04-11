@@ -34,9 +34,7 @@ it("should be able to generate the test directory", () => {
  */
 it("should be able to copy the gitignore file", () => {
     generator.copyGitIgnoreFile();
-    expect(
-        fs.existsSync(path.join(generator.rootDir, ".gitignore"))
-    ).toBeTruthy();
+    expect(fs.existsSync(path.join(generator.rootDir, ".gitignore"))).toBeTruthy();
 });
 
 /**
@@ -44,9 +42,7 @@ it("should be able to copy the gitignore file", () => {
  */
 it("should be able to copy the jest config file", () => {
     generator.copyJestConfigFile();
-    expect(
-        fs.existsSync(path.join(generator.rootDir, "jest.config.js"))
-    ).toBeTruthy();
+    expect(fs.existsSync(path.join(generator.rootDir, "jest.config.js"))).toBeTruthy();
 });
 
 /**
@@ -54,7 +50,13 @@ it("should be able to copy the jest config file", () => {
  */
 it("should be able to copy the TS config file", () => {
     generator.copyTsConfigFile();
-    expect(
-        fs.existsSync(path.join(generator.rootDir, "tsconfig.json"))
-    ).toBeTruthy();
+    expect(fs.existsSync(path.join(generator.rootDir, "tsconfig.json"))).toBeTruthy();
+});
+
+/**
+ * Tests copying the package.json file
+ */
+it("should be able to copy the package.json file", () => {
+    generator.copyPackageJsonFile();
+    expect(fs.existsSync(path.join(generator.rootDir, "package.json"))).toBeTruthy();
 });

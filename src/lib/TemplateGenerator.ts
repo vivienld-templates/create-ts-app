@@ -4,12 +4,16 @@
 export default interface TemplateGenerator {
     /** The project name. */
     name: string;
+
     /** The root directory path. */
     rootDir: string;
+
     /** The source directory path. */
     srcDir: string;
+
     /** The test directory path. */
     testDir: string;
+
     /** The assets directory path. */
     assetsDir: string;
 
@@ -42,4 +46,9 @@ export default interface TemplateGenerator {
      * Copies the `tsconfig.json` file in the project's root directory
      */
     copyTsConfigFile(): void;
+
+    /**
+     * Copies the `package.json` file in the project's root directory
+     */
+    copyPackageJsonFile(): void;
 }

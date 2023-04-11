@@ -20,32 +20,14 @@ export default abstract class BaseGenerator implements Generator {
         this.assetsDir = path.join("assets");
     }
 
-    generateRootDir = (): void => {
-        this.generateDir(this.rootDir);
-    };
+    generateRootDir = () => this.generateDir(this.rootDir);
+    generateSrcDir = () => this.generateDir(this.srcDir);
+    generateTestDir = () => this.generateDir(this.testDir);
 
-    generateSrcDir = (): void => {
-        this.generateDir(this.srcDir);
-    };
-
-    generateTestDir = (): void => {
-        this.generateDir(this.testDir);
-    };
-
-    copyGitIgnoreFile = (): void => {
-        this.copyAsset(".gitignore", this.rootDir);
-    };
-
-    copyJestConfigFile = (): void => {
-        this.copyAsset("jest.config.js", this.rootDir);
-    };
-
-    /**
-     * Copies the `tsconfig.json` file in the project's root directory
-     */
-    copyTsConfigFile = (): void => {
-        this.copyAsset("tsconfig.json", this.rootDir);
-    };
+    copyGitIgnoreFile = () => this.copyAsset(".gitignore", this.rootDir);
+    copyJestConfigFile = () => this.copyAsset("jest.config.js", this.rootDir);
+    copyTsConfigFile = () => this.copyAsset("tsconfig.json", this.rootDir);
+    copyPackageJsonFile = () => this.copyAsset("package.json", this.rootDir);
 
     /**
      * Recursively generates the directories.
@@ -63,16 +45,8 @@ export default abstract class BaseGenerator implements Generator {
      * @param destination The copy destination.
      */
     private copyAsset = (fileName: string, destination: string): void => {
-        console.log(
-            `Copying ${path.join(
-                this.assetsDir,
-                fileName
-            )} file to ${destination}`
-        );
-        fs.copyFileSync(
-            path.join(this.assetsDir, fileName),
-            path.join(destination, fileName)
-        );
+        console.log(`Copying ${path.join(this.assetsDir, fileName)} file to ${destination}`);
+        fs.copyFileSync(path.join(this.assetsDir, fileName), path.join(destination, fileName));
         console.log("ok");
     };
 
