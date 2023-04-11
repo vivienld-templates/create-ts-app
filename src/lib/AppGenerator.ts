@@ -1,21 +1,21 @@
 /**
- * The model of a project template generator.
+ * An app generator.
  */
-export default interface TemplateGenerator {
-    /** The project name. */
+export default interface AppGenerator {
+    /**
+     * Is the App a CLI app?
+     */
+    isCLI: boolean;
+
+    /**
+     * The project name.
+     */
     name: string;
 
-    /** The root directory path. */
-    rootDir: string;
-
-    /** The source directory path. */
-    srcDir: string;
-
-    /** The test directory path. */
-    testDir: string;
-
-    /** The assets directory path. */
-    assetsDir: string;
+    /**
+     * Generates the Application.
+     */
+    generate(): void;
 
     /**
      * Generates the root directory.
@@ -31,6 +31,16 @@ export default interface TemplateGenerator {
      * Generates the test directory.
      */
     generateTestDir(): void;
+
+    /**
+     * Generates the index.ts file.
+     */
+    generateIndexFile(): void;
+
+    /**
+     * Generates the index.test.ts file.
+     */
+    generateIndexTestFile(): void;
 
     /**
      * Copies the `.gitignore` file in the project's root directory
