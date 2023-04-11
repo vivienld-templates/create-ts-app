@@ -1,9 +1,9 @@
-import TemplateGenerator from "../src/lib/TemplateGenerator";
 import * as fs from "fs";
 import * as path from "path";
+import SimpleTemplateGenerator from "../src/lib/SimpleTemplateGenerator";
 
 const name = "project";
-const generator = new TemplateGenerator(name);
+const generator = new SimpleTemplateGenerator(name);
 
 /**
  * Tests root directory creation
