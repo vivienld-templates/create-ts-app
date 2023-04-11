@@ -2,6 +2,17 @@
  * The model of a project template generator.
  */
 export default interface TemplateGenerator {
+    /** The project name. */
+    name: string;
+    /** The root directory path. */
+    rootDir: string;
+    /** The source directory path. */
+    srcDir: string;
+    /** The test directory path. */
+    testDir: string;
+    /** The assets directory path. */
+    assetsDir: string;
+
     /**
      * Generates the root directory.
      */

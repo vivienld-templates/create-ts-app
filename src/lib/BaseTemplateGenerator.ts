@@ -6,15 +6,10 @@ import Generator from "./TemplateGenerator";
  * Base of a Template Generator
  */
 export default abstract class BaseGenerator implements Generator {
-    /** The project name. */
     private _name: string;
-    /** The root directory path. */
     private _rootDir: string;
-    /** The source directory path. */
     private _srcDir: string;
-    /** The test directory path. */
     private _testDir: string;
-    /** The assets directory path. */
     private _assetsDir: string;
 
     constructor(name: string) {
